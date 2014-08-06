@@ -1,0 +1,24 @@
+{
+  "name": "bluepay",
+  "version": "0.0.1",
+  "description": "Simple BluePay client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericz/node-bluepay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericz/node-bluepay/issues"
+  },
+  "homepage": "https://github.com/ericz/node-bluepay",
+  "dependencies": {
+    "extend": "^1.3.0",
+    "qs": "^1.1.0",
+    "request": "^2.40.0"
+  }
+}
