@@ -1,4 +1,4 @@
-var bp = require('./');
+var bp = require('../');
 
 
 payment = new bp.CardPayment({account_id: 'yourid', secret_key: 'yourkey', _debug: true});
