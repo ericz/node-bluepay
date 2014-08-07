@@ -123,7 +123,8 @@ var BLUEPAY_MESSAGES = {
   'card account not valid': 'Invalid credit card number',
   'approved sale': 'Payment successfully processed',
   'cvv2 decline': 'Card verfication number (CVV2) is incorrect',
-  'avs decline': 'Billing address verfication failed'
+  'avs decline': 'Billing address verfication failed',
+  'error selecting processor': 'Payment could not be processed (double check the amount?)'
 }
 
 var util = {
