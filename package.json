@@ -1,6 +1,6 @@
 {
   "name": "bluepay",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple BluePay client",
   "main": "index.js",
   "scripts": {
