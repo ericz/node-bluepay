@@ -24,7 +24,18 @@ function BluepayClient(options) {
       version: OPTIONAL,
       customer_ip: OPTIONAL,
       master_id: OPTIONAL,
-      mode: OPTIONAL
+      mode: OPTIONAL,
+
+      // AVS
+      name1: OPTIONAL,
+      name2: OPTIONAL,
+      addr1: OPTIONAL,
+      addr2: OPTIONAL,
+      city: OPTIONAL,
+      state: OPTIONAL,
+      zip: OPTIONAL,
+      country: OPTIONAL // ISO 3166
+
     },
     mode: 'TEST',
     trans_type: 'SALE',
@@ -86,6 +97,7 @@ function CardPayment(options) {
   }, options));
 }
 
+/*
 function ACHPayment(options) {
   return new BluepayClient(extend({
     payment_type: 'ACH',
@@ -94,28 +106,33 @@ function ACHPayment(options) {
     }
   }, options));
 }
-
-exports.CardPayment = CardPayment;
 exports.ACHPayment = ACHPayment;
+*/
+exports.CardPayment = CardPayment;
 
 
 
 var BLUEPAY_MESSAGES = {
-  'INV TRAN TYPE': 'Credit card type not currently supported',
-  'Amount may not be zero.': 'Payment amount must be greater than $0',
-  'MISSING PAYMENT ACCOUNT': 'Invalid credit card number',
-  'Card Expired': 'Credit card expiration date is not valid',
-  'Expiration date required for CREDIT': 'Credit card expiration date is not valid',
-  'Duplicate': 'This transaction has already been completed',
-  'Invalid CVV2': 'Card verfication number (CVV2) is not valid',
-  'CARD ACCOUNT NOT VALID': 'Invalid credit card number',
-  'Approved Sale': 'Payment successfully processed'
+  'inv tran type': 'Credit card type not currently supported',
+  'amount may not be zero.': 'Payment amount must be greater than $0',
+  'missing payment account': 'Invalid credit card number',
+  'card expired': 'Credit card expiration date is not valid',
+  'expiration date required for credit': 'Credit card expiration date is not valid',
+  'duplicate': 'This transaction has already been completed',
+  'invalid cvv2': 'Card verfication number (CVV2) is incorrect',
+  'card account not valid': 'Invalid credit card number',
+  'approved sale': 'Payment successfully processed',
+  'cvv2 decline': 'Card verfication number (CVV2) is incorrect',
+  'avs decline': 'Billing address verfication failed'
 }
 
 var util = {
   // Translate BluePay messages into something sensible
   message: function(message) {
-    return BLUEPAY_MESSAGES[message] || message;
+    if (!message) {
+      return message;
+    }
+    return BLUEPAY_MESSAGES[message.toLowerCase()] || message;
   },
 
 
