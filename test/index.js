@@ -16,3 +16,9 @@ payment.exec(function(err, res){
 
 });
 
+payment.exec(function(err, res){
+
+  //console.log('Exec cb', arguments);
+
+});
+

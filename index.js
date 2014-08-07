@@ -47,7 +47,7 @@ BluepayClient.prototype.set = function(key, value) {
 
 BluepayClient.prototype.exec = function(cb) {
   var self = this;
-  var form = pick(this.options, this.options._fields);
+  var form = util.pick(this.options, this.options._fields);
   if (form.constructor === Error) {
     return cb(form);
   }
@@ -99,23 +99,47 @@ exports.CardPayment = CardPayment;
 exports.ACHPayment = ACHPayment;
 
 
-// Returns object of properties selected from data based on rules in fields
-// fields = {
-//   a: REQUIRED,
-//   b: OPTIONAL
-// }
-function pick(data, fields) {
-  var out = {};
-  var keys = Object.keys(fields);
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var required = (fields[key] === REQUIRED);
-    var value = data[key];
-    if (required && value === undefined) {
-      return new Error("Missing required field '" + key + "'");
-    } else if (value !== undefined) {
-      out[key.toUpperCase()] = value.toString();
-    }
-  }
-  return out;
+
+var BLUEPAY_MESSAGES = {
+  'INV TRAN TYPE': 'Credit card type not currently supported',
+  'Amount may not be zero.': 'Payment amount must be greater than $0',
+  'MISSING PAYMENT ACCOUNT': 'Invalid credit card number',
+  'Card Expired': 'Credit card expiration date is not valid',
+  'Expiration date required for CREDIT': 'Credit card expiration date is not valid',
+  'Duplicate': 'This transaction has already been completed',
+  'Invalid CVV2': 'Card verfication number (CVV2) is not valid',
+  'CARD ACCOUNT NOT VALID': 'Invalid credit card number',
+  'Approved Sale': 'Payment successfully processed'
 }
+
+var util = {
+  // Translate BluePay messages into something sensible
+  message: function(message) {
+    return BLUEPAY_MESSAGES[message] || message;
+  },
+
+
+
+  // Returns object of properties selected from data based on rules in fields
+  // fields = {
+  //   a: REQUIRED,
+  //   b: OPTIONAL
+  // }
+  pick: function pick(data, fields) {
+    var out = {};
+    var keys = Object.keys(fields);
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      var required = (fields[key] === REQUIRED);
+      var value = data[key];
+      if (required && value === undefined) {
+        return new Error("Missing required field '" + key + "'");
+      } else if (value !== undefined) {
+        out[key.toUpperCase()] = value.toString();
+      }
+    }
+    return out;
+  }
+}
+// External util functions
+exports.util = util;
