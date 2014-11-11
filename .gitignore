@@ -26,3 +26,5 @@ node_modules
 
 # Don't push tests with private-keys
 test/test_private.js
+
+.DS_Store

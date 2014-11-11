@@ -97,6 +97,17 @@ function CardPayment(options) {
   }, options));
 }
 
+function CardRefund(options) {
+  return new BluepayClient(extend({
+    payment_type: 'CREDIT',
+    trans_type: 'REFUND',
+    payment_account: '',
+    _fields: {
+      master_id: REQUIRED
+    }
+  }, options));
+}
+
 /*
 function ACHPayment(options) {
   return new BluepayClient(extend({
@@ -109,6 +120,7 @@ function ACHPayment(options) {
 exports.ACHPayment = ACHPayment;
 */
 exports.CardPayment = CardPayment;
+exports.CardRefund = CardRefund;
 
 
 
