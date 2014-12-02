@@ -108,7 +108,7 @@ function CardRefund(options) {
   }, options));
 }
 
-/*
+
 function ACHPayment(options) {
   return new BluepayClient(extend({
     payment_type: 'ACH',
@@ -117,8 +117,8 @@ function ACHPayment(options) {
     }
   }, options));
 }
+
 exports.ACHPayment = ACHPayment;
-*/
 exports.CardPayment = CardPayment;
 exports.CardRefund = CardRefund;
 
