@@ -137,7 +137,8 @@ var BLUEPAY_MESSAGES = {
   'cvv2 decline': 'Card verfication number (CVV2) or expiration date incorrect',
   'avs decline': 'Billing address verfication failed',
   'error selecting processor': 'Payment could not be processed (double check the amount?)',
-  'auth/tkt': 'Payment successfully processed'
+  'auth/tkt': 'Payment successfully processed',
+  'sec violation': 'Card verfication number (CVV2) or expiration date incorrect'
 }
 
 var util = {
