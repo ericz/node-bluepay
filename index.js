@@ -148,7 +148,7 @@ var util = {
     if (!message) {
       return message;
     }
-    return BLUEPAY_MESSAGES[message.toLowerCase()] || message;
+    return BLUEPAY_MESSAGES[message.trim().toLowerCase()] || message;
   },
 
 
