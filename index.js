@@ -34,7 +34,9 @@ function BluepayClient(options) {
       city: OPTIONAL,
       state: OPTIONAL,
       zip: OPTIONAL,
-      country: OPTIONAL // ISO 3166
+      country: OPTIONAL, // ISO 3166
+      email: OPTIONAL,
+      phone: OPTIONAL
 
     },
     mode: 'TEST',
