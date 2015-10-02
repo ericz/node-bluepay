@@ -25,6 +25,9 @@ function BluepayClient(options) {
       customer_ip: OPTIONAL,
       master_id: OPTIONAL,
       mode: OPTIONAL,
+      order_id: OPTIONAL,
+      custom_id: OPTIONAL,
+      custom_id2: OPTIONAL,
 
       // AVS
       name1: OPTIONAL,
