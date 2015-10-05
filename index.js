@@ -28,6 +28,7 @@ function BluepayClient(options) {
       order_id: OPTIONAL,
       custom_id: OPTIONAL,
       custom_id2: OPTIONAL,
+      duplicate_override: OPTIONAL,
 
       // AVS
       name1: OPTIONAL,
